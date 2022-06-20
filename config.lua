@@ -1,0 +1,91 @@
+-- TODO:
+-- start fish when terminal opened
+-- use prettierrc as formatter
+-- set max height for toggle term as horizontal term
+-- set max width for nvim-tree
+-- find way to use which-key for vim-surround and other plugins
+
+-- organize config and push to github
+-- add .luacheckrc and stylua.toml
+-- add README.md with: List of plugins, required installations (Lua, Luarocks, Cargo/Rust, Node.js, ...)
+
+-- custom plugins
+require("user.plugins")
+
+-- Formatters
+require("user.formatters").setup()
+
+-- set additional linters
+require("user.linters").setup()
+
+-- general
+lvim.log.level = "warn"
+lvim.format_on_save = true
+
+-- colorscheme
+lvim.colorscheme = "onedark"
+
+-- keymappings [view all the defaults by pressing <leader>Lk]
+vim.g.mapleader = " "
+lvim.leader = "space"
+-- add your own keymapping
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
+local opts = { noremap = true, silent = true }
+-- open new unnamed buffer
+vim.api.nvim_set_keymap("n", "<Leader>bn", ":ene<CR>", opts)
+lvim.builtin.which_key.mappings["bn"] = {
+	":ene<CR>",
+	"open unnamed buffer",
+}
+
+-- open new named buffer (name from command line)
+vim.api.nvim_set_keymap("n", "<Leader>bN", ":ene|e ", opts)
+lvim.builtin.which_key.mappings["bN"] = {
+	":ene|e ",
+	"name buffer then open",
+}
+
+-- terminal
+-- open horizontal terminal
+vim.api.nvim_set_keymap("n", "<Leader>th", ":ToggleTerm size=10 direction=horizontal<CR>", opts)
+lvim.builtin.which_key.mappings["th"] = {
+	":ToggleTerm size=10 direction=horizontal<CR>",
+	"toggle horizontal terminal",
+}
+
+-- setup auto tags for HTML and JSX/TSX
+require("nvim-ts-autotag").setup()
+
+-- Add custom snippets
+require("luasnip.loaders.from_vscode").load({ paths = "./snippets" })
+
+-- nvim-tree customization
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.filters.dotfiles = false
+lvim.builtin.nvimtree.setup.filters.custom = {}
+
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.notify.active = true
+lvim.builtin.terminal.active = true
+
+-- if you don't want all the parsers change this to a table of the ones you want
+lvim.builtin.treesitter.ensure_installed = {
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"tsx",
+	"css",
+	"rust",
+	"java",
+	"yaml",
+}
+
+lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.highlight.enabled = true

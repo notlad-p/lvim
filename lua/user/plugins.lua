@@ -22,4 +22,18 @@ lvim.plugins = {
 	},
 	{ "ggandor/lightspeed.nvim" },
 	{ "tpope/vim-surround" },
+	{
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("user.lsp_signature").config()
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 }

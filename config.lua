@@ -18,41 +18,15 @@ require("user.formatters").setup()
 -- set additional linters
 require("user.linters").setup()
 
+-- set custom keybindings
+require("user.keys")
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
 
 -- colorscheme
 lvim.colorscheme = "onedark"
-
--- keymappings [view all the defaults by pressing <leader>Lk]
-vim.g.mapleader = " "
-lvim.leader = "space"
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
-local opts = { noremap = true, silent = true }
--- open new unnamed buffer
-vim.api.nvim_set_keymap("n", "<Leader>bn", ":ene<CR>", opts)
-lvim.builtin.which_key.mappings["bn"] = {
-	":ene<CR>",
-	"open unnamed buffer",
-}
-
--- open new named buffer (name from command line)
-vim.api.nvim_set_keymap("n", "<Leader>bN", ":ene|e ", opts)
-lvim.builtin.which_key.mappings["bN"] = {
-	":ene|e ",
-	"name buffer then open",
-}
-
--- terminal
--- open horizontal terminal
-vim.api.nvim_set_keymap("n", "<Leader>th", ":ToggleTerm size=10 direction=horizontal<CR>", opts)
-lvim.builtin.which_key.mappings["th"] = {
-	":ToggleTerm size=10 direction=horizontal<CR>",
-	"toggle horizontal terminal",
-}
 
 -- setup auto tags for HTML and JSX/TSX
 require("nvim-ts-autotag").setup()

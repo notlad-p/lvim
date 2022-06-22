@@ -22,7 +22,7 @@ require("user.linters").setup()
 require("user.keys")
 
 -- set autocommands
--- require("user.autocommands").config()
+require("user.autocommands").config()
 
 -- general
 lvim.log.level = "warn"
@@ -50,18 +50,18 @@ lvim.builtin.terminal.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"tsx",
+	"css",
+	"rust",
+	"java",
+	"yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }

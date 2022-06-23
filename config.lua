@@ -24,6 +24,9 @@ require("user.keys")
 -- set autocommands
 require("user.autocommands").config()
 
+-- set dashboards
+require("user.dashboard")
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true

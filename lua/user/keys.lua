@@ -24,9 +24,11 @@ lvim.builtin.which_key.mappings["bN"] = {
 }
 
 -- terminal
--- open horizontal terminal
-vim.api.nvim_set_keymap("n", "<Leader>th", ":ToggleTerm size=10 direction=horizontal<CR>", opts)
-lvim.builtin.which_key.mappings["th"] = {
-	":ToggleTerm size=10 direction=horizontal<CR>",
-	"toggle horizontal terminal",
+lvim.builtin.which_key.mappings["t"] = {
+	name = "Terminal",
+	-- open horizontal terminal
+	h = { ":ToggleTerm size=10 direction=horizontal<CR>", "toggle horizontal terminal" },
+	-- open lazygit terminal
+	-- temparary fix for using lazygit (Couldn't get terminal execs to work)
+	l = { "5:TermExec cmd='lazygit'<CR>", "LazyGit" },
 }

@@ -1,4 +1,4 @@
-# My LunarVim config
+# My [LunarVim](https://www.lunarvim.org/) config
 
 ### Extra packages
 
@@ -9,4 +9,6 @@
 - [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)
 - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
-<!-- ### Required Installations -->
+### Required Installations
+
+- [lazygit](https://github.com/jesseduffield/lazygit) - I installed from a [binary release](https://github.com/jesseduffield/lazygit/releases) & used a bash alias `lazygit` to run `~/lazygit`
